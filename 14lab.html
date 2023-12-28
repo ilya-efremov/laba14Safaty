@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>14</title>
+</head>
+<body>
+<input type="text" id="mod">
+<input type="button" value="далее" onclick="beginning()">
+<p id="result">Получаем:</p>
+<script>
+function beginning(){
+let mod = Number(document.getElementById('mod').value);
+let i = 1;
+while (i){
+if (calculTwo(i, mod) && calculThree(i, mod)){
+document.getElementById('result').innerText = `Равен: ${i}`;
+break;
+}
+i++;
+}
+}
+
+function calculOne(num){
+let counter = 0;
+for (let i = 1; i<=num; i++){
+for (let j = 1; j<=i; j++){
+if (i%j == 0 && num%j == 0 && j!=1)
+break;
+else if (j == i)
+counter++;}
+}
+return counter;
+}
+
+function calculTwo(num, mod){
+if (num**calculOne(mod)%mod == 1)
+return true;
+else
+return false;
+}
+
+function calculThree(num, mod){
+for (let i = 1; i < calculOne(mod); i++){
+if (num**i%mod == 1){
+return false;
+}}
+return true;
+}
+</script>
+</body>
+</html>
